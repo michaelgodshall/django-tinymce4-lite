@@ -27,7 +27,8 @@ if USE_SPELLCHECKER:
     DEFAULT['toolbar1'] += ' | spellchecker'
 CONFIG = getattr(settings, 'TINYMCE_DEFAULT_CONFIG', DEFAULT)
 """TinyMCE 4 configuration"""
-JS_URL = getattr(settings, 'TINYMCE_JS_URL', staticfiles_storage.url('tinymce/js/tinymce/tinymce.min.js'))
+JS_URL = getattr(settings, 'TINYMCE_JS_URL' if hasattr(settings, 'TINYMCE_JS_URL')
+                 else staticfiles_storage.url('tinymce/js/tinymce/tinymce.min.js'))
 """TinyMCE 4 JavaScript code"""
 ADDIONAL_JS_URLS = getattr(settings, 'TINYMCE_ADDITIONAL_JS_URLS', None)
 """Additional JS files for TinyMCE (e.g. custom plugins)"""
